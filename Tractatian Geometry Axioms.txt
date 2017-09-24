@@ -1,0 +1,102 @@
+%*****************************************
+%     TRACTARIAN GEOMETRY                *
+%*****************************************
+
+%*************************************
+%     QUALITY SPACE                  *
+%*************************************
+
+%**********************************
+%     OFFICIAL DEFINITIONS        *
+%**********************************
+
+all x all y(CL(x,y) <-> (CP(x,y,y,x))). 
+%D.1 (Colinear) 
+
+%**********************************
+%     OFFICIAL AXIOMS             *
+%**********************************
+
+all x (CP(x,x,x,x)). 
+%A.1 (Narrow Reflexivity)
+
+all x all y all z all w (CP(w,x,y,z)->CP(x,w,y,z)).
+%A.2 (Left Symmetry)
+
+all x all y all z all w (CP(w,x,y,z)->CP(y,z,w,x)).
+%A.3 (Global Symmetry)
+
+all x all y all z all w all u all v((CP(w,x,y,z) & CP(y,z,u,v) & -(y=z))-> (CP(w,x,u,v))).
+%A.4 (Qualified Transitivity)
+
+all x all y all z (CP(x,y,x,z)->CL(y,z)). 
+%A.5 (Collapse 1)
+
+all x all y all z all w(CP(x,y,w,z)->CL(x,y)). 
+%A.6 (Collapse 2)
+
+all x all y all z all w((X(y) & X(z) & CL(y,z))->((X(w) & X(x) & X(y) & X(z))->CP(w,x,y,z))).  
+%A.7 (Coordination)
+
+all w all x all y ((CL(w,x) & CL(w,y))-> exists z(CP(w,x,y,z) & CP(w,y,x,z))).
+%A.8 (Plenitude)
+
+%**********************************
+%     OFFICIAL THEOREMS           *
+%**********************************
+
+%all x all y all z all w (CP(w,x,y,z)->CP(w,x,z,y)).
+%T.1:(Right Symmetry); A.2+A.3 |- T.1 
+
+%all x all y (CL(x,y) -> CL(y,x)). 
+%T.2 (Symmetry); A.3 |- T.2
+
+%all x (CL(x,x)). 
+%T.3 (Reflexivity); A.1 |- T.3
+
+%**********************************
+%     JB PROVED THEOREMS          *
+%**********************************
+
+%all x all y all z all w(CP(x,y,w,z)->CL(w,z)). 
+%T.4 (JB added) A.3 + A.6 |- T.4
+
+%all x all y all z ((X(x) & X(y) & X(z) & CL(x,y) & CL(x,z) & CL(y,z))->(CP(x,y,y,x) & CP(x,y,y,z) & CP(y,x,x,z))). 
+%T.5 (JB added; testing coordination against pg. 83 on triangles); A.7 |- T.5
+
+%**********************************
+%     REJECTED AXIOMS             *
+%**********************************
+
+%all x all y(CP(x,y,y,x)). 
+%(Generous Reflexivity); Entails every two points are colinear, not asserted.
+
+%all x all y all z all w all u all v((CP(w,x,y,z) & CP(y,z,u,v))-> (CP(w,x,u,v))).
+%(Global Transitivity); Entails all intersecting lines are parallel, not asserted.
+
+%**********************************
+%     JB ASSERTED AXIOMS          *
+%**********************************
+
+exists x exists y exists z exists w (CP(x,y,z,w)). 
+% (JB added; preclude empty domain)
+
+exists x (X(x)). 
+% (JB added; preclude empty plural predicate simulation)
+
+%**********************************
+%     FORMAL PROBLEMS IN TEXT     *
+%**********************************
+
+%-(all x all y all z((CL(x,y) & CL(y,z))->CL(x,z))).  
+%P.1 Turner claims should be the case (pg. 82). But this problematic axiom is satisfiable given others. 
+
+all x all y all z ((CL(x,y) & CL(x,z))-> exists w(CL(w,y) & CL(w,z))).
+%P.2 (pg. 83, says entailed by Plenitude, but as stated this is trivial truth; denial is contradictory) 
+
+all x all y all z ((CL(x,y) & CL(x,z) & -(x=y | x=z | y=z))-> exists w(-(w=y | w=z | x=w) & CL(w,y) & CL(w,z))).
+%P.3 (pg. 83, more accurate formalization of P.2 but IS NOT ENTAILED BY AXIOMS, pace Turner's claims)
+
+all x all y all z all w ((CP(x,y,z,w) & CL(x,z) & CL(y,w))->CP(x,z,y,w)).
+%P.4 (Right Angles, claimed theorem pg 84, but IS NOT ENTAILED BY AXIOMS, pace Turner's claims) 
+
